@@ -1,5 +1,16 @@
+# Core (our model). The training path needs only torch + numpy.
 torch>=2.0.0
-toponetx>=0.4.0
-numpy>=2.0.0
-scipy>=1.15.0
-pandas>=2.0.0
+numpy>=1.24.0,<2
+
+# Metrics and result aggregation
+scikit-learn>=1.2.2
+
+# Baselines only (skip if you are running the proposed model alone).
+# torch-scatter has no PyPI wheel; install it from the PyG wheel index matched to
+# your torch build, e.g.
+#   pip install torch_scatter -f https://data.pyg.org/whl/torch-2.3.0+cu121.html
+torch-geometric>=2.3.0
+torch-scatter
+py-tgb>=2.3.0
+pandas>=2.0,<2.3
+tqdm>=4.65.0

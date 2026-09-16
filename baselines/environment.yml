@@ -1,0 +1,41 @@
+# SEED-VII portable setup (no temporal_gnns repo required).
+#
+# You need on the new server:
+#   1. temporal_HTGNN/          (unzip project)
+#   2. SEED data/               (alpha, delta, theta, beta, gamma, all_band)
+#   3. Edit config.py           SEED_DATA_ROOT = "/path/to/SEED/data"
+#
+# Install:
+#   conda env create -f environment.yml
+#   conda activate temporal_htgnn
+#   bash scripts/install_pyg_extensions.sh        # GPU (CUDA 12.1)
+#   bash scripts/install_pyg_extensions.sh cpu      # CPU only
+#
+# Run:
+#   export PYTHONPATH=/path/to/temporal_HTGNN
+#   python main_seed.py --dry_run --model tgn --band alpha --gpu 0
+
+name: temporal_htgnn
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pip
+  # PyTorch (CUDA 12.1). For CPU-only, remove pytorch-cuda and use install_pyg_extensions.sh cpu
+  - pytorch=2.4.*
+  - pytorch-cuda=12.1
+  - numpy>=1.24,<2
+  - pandas>=2.0,<2.3
+  - scipy>=1.10
+  - scikit-learn>=1.2
+  - tqdm>=4.65
+  - matplotlib>=3.7
+  - requests>=2.28
+  - pip:
+      - clint>=0.5.1
+      - joblib>=1.2
+      # Replaces cloning temporal_gnns — provides the `tgb` package
+      - "py-tgb[torch]>=2.3.0"
+      - torch-geometric>=2.5.0
