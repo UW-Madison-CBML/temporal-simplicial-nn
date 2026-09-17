@@ -1,4 +1,4 @@
-# SiSTER: A Simplicial Spatiotemporal Network for EEG Emotion Recognition
+# T-SNN: Temporal Simplicial Neural Network for EEG Emotion Recognition
 
 Code and reproduction scripts for emotion recognition from EEG modelled as a
 **sequence of simplicial complexes**. Each trial is split into overlapping
